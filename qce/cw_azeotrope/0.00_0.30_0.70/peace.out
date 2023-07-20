@@ -1,0 +1,728 @@
+
+    Peacemaker 2.8 - a Quantum Cluster Equilibrium (QCE) code:               
+
+        Copyright 2004-2006 Barbara Kirchner, University of Bonn
+        Copyright 2007-2012 Barbara Kirchner, University of Leipzig          
+        Copyright 2013-2018 Barbara Kirchner, University of Bonn             
+
+        This program is free software: you can redistribute it and/or modify 
+        it under the terms of the GNU General Public License as published by 
+        the Free Software Foundation, either version 3 of the License, or    
+        (at your option) any later version.                                  
+
+        This program is distributed in the hope that it will be useful,      
+        but WITHOUT ANY WARRANTY; without even the implied warranty of       
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        
+        GNU General Public License for more details.                         
+
+        You should have received a copy of the GNU General Public License    
+        along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    The Peacemaker team (in alphabetical order):                             
+
+        * Johannes Ingenmey                                                  
+        * Gwydyon Marchelli                                                  
+        * Eva Perlt                                                          
+        * Michael von Domaros                                                
+
+        * Barbara Kirchner                                                   
+
+[1m    Please let us know that you use Peacemaker by sending a short email to   
+    qce@thch.uni-bonn.de. This will help us reaching out to you in case of   
+    critical bug fixes or new releases.                                      [0m
+
+    Using the following input:
+
+        [system]
+            components: 2
+
+        [ensemble]
+            pressure: 1.01325 [bar]
+            temperature: 273.150 ... 399.150 [K]
+            monomer amounts: 0.300000 0.700000 [mol]
+
+        [qce]
+            amf_mix: 0.387433 [J*m^3/mol^2]
+            amf_pure: 0.00000 0.00000 [J*m^3/mol^2]
+            bxv_mix: 1.12997
+            bxv_pure: 1.00000 1.00000
+            maximum number of QCE iterations: 100
+            maximum number of Newton-Raphson iterations: 500
+            maximum relative deviation: 0.100000E-008
+            number of grid iterations: 1
+            optimizer: Downhill-Simplex
+            volume damping factor: 0.100000E-001
+            free rotator correction threshold frequency: 0.00000
+
+        [reference]
+            density (weight = 1.00000): 298.150 0.926048 [K; g/cm^3]
+            phase transition (weight = 1.00000): 350.817 [K]
+
+    Using the following clusterset:
+
+        [m1] (monomer)
+            composition: 1 0
+            sigma: 1
+            energy: 0.00000 [kJ/mol]
+            volume: 57.5909 [A^3]
+            mass: 32.0420 [amu]
+            inertia: 20.7887 20.0460 3.94888 [amu*Angstrom^2]
+            frequencies: 375.139 ... 3558.29 [1/cm]
+
+        [m2-1]
+            composition: 2 0
+            sigma: 1
+            energy: -20.3584 [kJ/mol]
+            volume: 115.182 [A^3]
+            mass: 64.0840 [amu]
+            inertia: 232.549 227.948 27.6395 [amu*Angstrom^2]
+            frequencies: 26.6592 ... 3552.21 [1/cm]
+
+        [m3-1]
+            composition: 3 0
+            sigma: 1
+            energy: -60.2926 [kJ/mol]
+            volume: 172.773 [A^3]
+            mass: 96.1260 [amu]
+            inertia: 444.875 267.573 223.198 [amu*Angstrom^2]
+            frequencies: 42.3637 ... 3317.36 [1/cm]
+
+        [m4-1]
+            composition: 4 0
+            sigma: 2
+            energy: -107.279 [kJ/mol]
+            volume: 230.363 [A^3]
+            mass: 128.168 [amu]
+            inertia: 694.243 453.238 453.224 [amu*Angstrom^2]
+            frequencies: 15.6765 ... 3188.64 [1/cm]
+
+        [m5-1]
+            composition: 5 0
+            sigma: 1
+            energy: -142.242 [kJ/mol]
+            volume: 287.954 [A^3]
+            mass: 160.210 [amu]
+            inertia: 946.962 718.032 620.429 [amu*Angstrom^2]
+            frequencies: 17.3901 ... 3219.08 [1/cm]
+
+        [m5-2]
+            composition: 5 0
+            sigma: 1
+            energy: -141.441 [kJ/mol]
+            volume: 287.954 [A^3]
+            mass: 160.210 [amu]
+            inertia: 958.882 721.346 620.295 [amu*Angstrom^2]
+            frequencies: 12.7166 ... 3206.93 [1/cm]
+
+        [m6-2]
+            composition: 6 0
+            sigma: 1
+            energy: -177.595 [kJ/mol]
+            volume: 345.545 [A^3]
+            mass: 192.252 [amu]
+            inertia: 1299.35 1082.67 832.608 [amu*Angstrom^2]
+            frequencies: 12.8052 ... 3210.62 [1/cm]
+
+        [m6-3]
+            composition: 6 0
+            sigma: 1
+            energy: -173.490 [kJ/mol]
+            volume: 345.545 [A^3]
+            mass: 192.252 [amu]
+            inertia: 1278.66 1005.08 890.339 [amu*Angstrom^2]
+            frequencies: 14.1307 ... 3238.31 [1/cm]
+
+        [m6-4]
+            composition: 6 0
+            sigma: 1
+            energy: -177.117 [kJ/mol]
+            volume: 345.545 [A^3]
+            mass: 192.252 [amu]
+            inertia: 1339.33 1080.43 831.274 [amu*Angstrom^2]
+            frequencies: 20.2371 ... 3219.83 [1/cm]
+
+        [m6-5]
+            composition: 6 0
+            sigma: 1
+            energy: -176.936 [kJ/mol]
+            volume: 345.545 [A^3]
+            mass: 192.252 [amu]
+            inertia: 1295.08 1060.06 859.850 [amu*Angstrom^2]
+            frequencies: 18.3856 ... 3210.33 [1/cm]
+
+        [m6-7]
+            composition: 6 0
+            sigma: 1
+            energy: -174.931 [kJ/mol]
+            volume: 345.545 [A^3]
+            mass: 192.252 [amu]
+            inertia: 1166.11 954.860 918.003 [amu*Angstrom^2]
+            frequencies: 19.5232 ... 3218.01 [1/cm]
+
+        [m6-8]
+            composition: 6 0
+            sigma: 1
+            energy: -173.494 [kJ/mol]
+            volume: 345.545 [A^3]
+            mass: 192.252 [amu]
+            inertia: 1299.18 1013.52 888.291 [amu*Angstrom^2]
+            frequencies: 11.9096 ... 3236.39 [1/cm]
+
+        [w1] (monomer)
+            composition: 0 1
+            sigma: 2
+            energy: 0.00000 [kJ/mol]
+            volume: 25.8608 [A^3]
+            mass: 18.0160 [amu]
+            inertia: 1.78182 1.20211 0.579706 [amu*Angstrom^2]
+            frequencies: 1539.47 ... 3651.35 [1/cm]
+
+        [w2]
+            composition: 0 2
+            sigma: 1
+            energy: -20.7886 [kJ/mol]
+            volume: 51.7216 [A^3]
+            mass: 36.0320 [amu]
+            inertia: 74.5061 74.5012 2.40431 [amu*Angstrom^2]
+            frequencies: 117.770 ... 3665.26 [1/cm]
+
+        [w3-1]
+            composition: 0 3
+            sigma: 1
+            energy: -61.4142 [kJ/mol]
+            volume: 77.5824 [A^3]
+            mass: 54.0480 [amu]
+            inertia: 141.665 73.5210 71.4301 [amu*Angstrom^2]
+            frequencies: 104.656 ... 3665.91 [1/cm]
+
+        [w3-2]
+            composition: 0 3
+            sigma: 2
+            energy: -36.7964 [kJ/mol]
+            volume: 77.5824 [A^3]
+            mass: 54.0480 [amu]
+            inertia: 268.154 254.965 17.9884 [amu*Angstrom^2]
+            frequencies: 29.9882 ... 3638.95 [1/cm]
+
+        [w4-1]
+            composition: 0 4
+            sigma: 2
+            energy: -111.925 [kJ/mol]
+            volume: 103.443 [A^3]
+            mass: 72.0640 [amu]
+            inertia: 263.645 134.936 134.936 [amu*Angstrom^2]
+            frequencies: 46.3047 ... 3666.81 [1/cm]
+
+        [w4-2]
+            composition: 0 4
+            sigma: 1
+            energy: -106.948 [kJ/mol]
+            volume: 103.443 [A^3]
+            mass: 72.0640 [amu]
+            inertia: 267.328 136.423 135.498 [amu*Angstrom^2]
+            frequencies: 25.6897 ... 3665.25 [1/cm]
+
+        [w5-2]
+            composition: 0 5
+            sigma: 1
+            energy: -145.782 [kJ/mol]
+            volume: 129.304 [A^3]
+            mass: 90.0800 [amu]
+            inertia: 245.875 240.206 220.498 [amu*Angstrom^2]
+            frequencies: 37.0749 ... 3671.72 [1/cm]
+
+        [w5-6]
+            composition: 0 5
+            sigma: 1
+            energy: -123.569 [kJ/mol]
+            volume: 129.304 [A^3]
+            mass: 90.0800 [amu]
+            inertia: 471.053 465.846 143.161 [amu*Angstrom^2]
+            frequencies: 24.1398 ... 3666.36 [1/cm]
+
+        [w5-7]
+            composition: 0 5
+            sigma: 1
+            energy: -124.139 [kJ/mol]
+            volume: 129.304 [A^3]
+            mass: 90.0800 [amu]
+            inertia: 329.025 321.752 144.866 [amu*Angstrom^2]
+            frequencies: 24.9272 ... 3673.20 [1/cm]
+
+        [w6-1]
+            composition: 0 6
+            sigma: 1
+            energy: -191.889 [kJ/mol]
+            volume: 155.165 [A^3]
+            mass: 108.096 [amu]
+            inertia: 427.616 401.827 220.387 [amu*Angstrom^2]
+            frequencies: 43.0208 ... 3679.01 [1/cm]
+
+        [w6-2]
+            composition: 0 6
+            sigma: 1
+            energy: -192.292 [kJ/mol]
+            volume: 155.165 [A^3]
+            mass: 108.096 [amu]
+            inertia: 353.180 339.374 282.351 [amu*Angstrom^2]
+            frequencies: 52.6023 ... 3683.00 [1/cm]
+
+        [w6-4]
+            composition: 0 6
+            sigma: 1
+            energy: -185.520 [kJ/mol]
+            volume: 155.165 [A^3]
+            mass: 108.096 [amu]
+            inertia: 579.268 428.270 258.401 [amu*Angstrom^2]
+            frequencies: 17.0947 ... 3671.84 [1/cm]
+
+        [w6-5]
+            composition: 0 6
+            sigma: 1
+            energy: -177.407 [kJ/mol]
+            volume: 155.165 [A^3]
+            mass: 108.096 [amu]
+            inertia: 412.894 398.313 221.134 [amu*Angstrom^2]
+            frequencies: 55.3375 ... 3674.83 [1/cm]
+
+        [w6-7]
+            composition: 0 6
+            sigma: 1
+            energy: -180.124 [kJ/mol]
+            volume: 155.165 [A^3]
+            mass: 108.096 [amu]
+            inertia: 394.245 371.392 242.005 [amu*Angstrom^2]
+            frequencies: 43.1478 ... 3680.12 [1/cm]
+
+        [w6-8]
+            composition: 0 6
+            sigma: 1
+            energy: -180.124 [kJ/mol]
+            volume: 155.165 [A^3]
+            mass: 108.096 [amu]
+            inertia: 394.274 371.305 241.977 [amu*Angstrom^2]
+            frequencies: 43.7710 ... 3679.91 [1/cm]
+
+        [w6-10]
+            composition: 0 6
+            sigma: 1
+            energy: -177.765 [kJ/mol]
+            volume: 155.165 [A^3]
+            mass: 108.096 [amu]
+            inertia: 566.791 385.299 311.463 [amu*Angstrom^2]
+            frequencies: 12.4081 ... 3672.90 [1/cm]
+
+        [m1w1-1]
+            composition: 1 1
+            sigma: 1
+            energy: -20.4807 [kJ/mol]
+            volume: 83.4517 [A^3]
+            mass: 50.0580 [amu]
+            inertia: 135.106 124.392 16.3815 [amu*Angstrom^2]
+            frequencies: 53.3051 ... 3664.29 [1/cm]
+
+        [m1w1-4]
+            composition: 1 1
+            sigma: 1
+            energy: -20.0296 [kJ/mol]
+            volume: 83.4517 [A^3]
+            mass: 50.0580 [amu]
+            inertia: 141.170 132.959 13.8189 [amu*Angstrom^2]
+            frequencies: 60.9207 ... 3637.64 [1/cm]
+
+        [m1w2-1]
+            composition: 1 2
+            sigma: 1
+            energy: -60.7545 [kJ/mol]
+            volume: 109.312 [A^3]
+            mass: 68.0740 [amu]
+            inertia: 222.462 160.077 81.7066 [amu*Angstrom^2]
+            frequencies: 48.4377 ... 3664.24 [1/cm]
+
+        [m1w3-1]
+            composition: 1 3
+            sigma: 1
+            energy: -110.041 [kJ/mol]
+            volume: 135.173 [A^3]
+            mass: 86.0900 [amu]
+            inertia: 367.257 247.139 149.345 [amu*Angstrom^2]
+            frequencies: 35.3293 ... 3665.14 [1/cm]
+
+        [m1w4-1]
+            composition: 1 4
+            sigma: 1
+            energy: -145.777 [kJ/mol]
+            volume: 161.034 [A^3]
+            mass: 104.106 [amu]
+            inertia: 359.045 355.336 233.541 [amu*Angstrom^2]
+            frequencies: 44.6077 ... 3670.39 [1/cm]
+
+        [m1w4-7]
+            composition: 1 4
+            sigma: 1
+            energy: -145.796 [kJ/mol]
+            volume: 161.034 [A^3]
+            mass: 104.106 [amu]
+            inertia: 361.627 342.621 250.425 [amu*Angstrom^2]
+            frequencies: 22.5101 ... 3669.59 [1/cm]
+
+        [m1w4-9]
+            composition: 1 4
+            sigma: 1
+            energy: -142.946 [kJ/mol]
+            volume: 161.034 [A^3]
+            mass: 104.106 [amu]
+            inertia: 577.625 376.359 258.669 [amu*Angstrom^2]
+            frequencies: 20.3526 ... 3665.80 [1/cm]
+
+        [m1w5-2]
+            composition: 1 5
+            sigma: 1
+            energy: -189.152 [kJ/mol]
+            volume: 186.895 [A^3]
+            mass: 122.122 [amu]
+            inertia: 589.357 563.876 236.431 [amu*Angstrom^2]
+            frequencies: 30.5761 ... 3666.90 [1/cm]
+
+        [m1w5-3]
+            composition: 1 5
+            sigma: 1
+            energy: -190.992 [kJ/mol]
+            volume: 186.895 [A^3]
+            mass: 122.122 [amu]
+            inertia: 574.112 564.957 240.752 [amu*Angstrom^2]
+            frequencies: 37.8950 ... 3677.54 [1/cm]
+
+        [m1w5-4]
+            composition: 1 5
+            sigma: 1
+            energy: -190.355 [kJ/mol]
+            volume: 186.895 [A^3]
+            mass: 122.122 [amu]
+            inertia: 581.649 558.288 237.448 [amu*Angstrom^2]
+            frequencies: 36.0292 ... 3678.29 [1/cm]
+
+        [m1w5-5]
+            composition: 1 5
+            sigma: 1
+            energy: -191.036 [kJ/mol]
+            volume: 186.895 [A^3]
+            mass: 122.122 [amu]
+            inertia: 614.839 580.052 235.008 [amu*Angstrom^2]
+            frequencies: 29.2448 ... 3678.38 [1/cm]
+
+        [m1w5-6]
+            composition: 1 5
+            sigma: 1
+            energy: -190.475 [kJ/mol]
+            volume: 186.895 [A^3]
+            mass: 122.122 [amu]
+            inertia: 622.532 583.955 231.602 [amu*Angstrom^2]
+            frequencies: 29.8203 ... 3677.97 [1/cm]
+
+        [m1w5-9]
+            composition: 1 5
+            sigma: 1
+            energy: -190.109 [kJ/mol]
+            volume: 186.895 [A^3]
+            mass: 122.122 [amu]
+            inertia: 504.460 423.745 352.289 [amu*Angstrom^2]
+            frequencies: 38.6871 ... 3678.01 [1/cm]
+
+        [m2w1-1]
+            composition: 2 1
+            sigma: 1
+            energy: -60.3133 [kJ/mol]
+            volume: 141.043 [A^3]
+            mass: 82.1000 [amu]
+            inertia: 315.912 220.182 133.836 [amu*Angstrom^2]
+            frequencies: 45.0492 ... 3660.98 [1/cm]
+
+        [m2w1-3]
+            composition: 2 1
+            sigma: 1
+            energy: -60.1796 [kJ/mol]
+            volume: 141.043 [A^3]
+            mass: 82.1000 [amu]
+            inertia: 332.575 247.927 116.115 [amu*Angstrom^2]
+            frequencies: 43.1301 ... 3662.32 [1/cm]
+
+        [m2w2-1]
+            composition: 2 2
+            sigma: 1
+            energy: -108.803 [kJ/mol]
+            volume: 166.903 [A^3]
+            mass: 100.116 [amu]
+            inertia: 480.005 292.834 242.705 [amu*Angstrom^2]
+            frequencies: 29.0895 ... 3663.67 [1/cm]
+
+        [m2w3-1]
+            composition: 2 3
+            sigma: 1
+            energy: -146.183 [kJ/mol]
+            volume: 192.764 [A^3]
+            mass: 118.132 [amu]
+            inertia: 494.390 416.267 313.667 [amu*Angstrom^2]
+            frequencies: 28.7575 ... 3667.84 [1/cm]
+
+        [m2w3-6]
+            composition: 2 3
+            sigma: 1
+            energy: -145.856 [kJ/mol]
+            volume: 192.764 [A^3]
+            mass: 118.132 [amu]
+            inertia: 490.224 411.530 313.332 [amu*Angstrom^2]
+            frequencies: 39.2568 ... 3662.28 [1/cm]
+
+        [m2w3-7]
+            composition: 2 3
+            sigma: 1
+            energy: -144.807 [kJ/mol]
+            volume: 192.764 [A^3]
+            mass: 118.132 [amu]
+            inertia: 498.644 422.857 316.728 [amu*Angstrom^2]
+            frequencies: 32.6387 ... 3660.64 [1/cm]
+
+        [m2w4-1]
+            composition: 2 4
+            sigma: 1
+            energy: -190.204 [kJ/mol]
+            volume: 218.625 [A^3]
+            mass: 136.148 [amu]
+            inertia: 797.553 775.348 262.267 [amu*Angstrom^2]
+            frequencies: 28.7200 ... 3677.27 [1/cm]
+
+        [m2w4-4]
+            composition: 2 4
+            sigma: 1
+            energy: -189.349 [kJ/mol]
+            volume: 218.625 [A^3]
+            mass: 136.148 [amu]
+            inertia: 828.367 789.339 249.014 [amu*Angstrom^2]
+            frequencies: 27.0548 ... 3675.12 [1/cm]
+
+        [m2w4-5]
+            composition: 2 4
+            sigma: 1
+            energy: -185.310 [kJ/mol]
+            volume: 218.625 [A^3]
+            mass: 136.148 [amu]
+            inertia: 638.068 609.866 432.862 [amu*Angstrom^2]
+            frequencies: 27.4604 ... 3668.27 [1/cm]
+
+        [m2w4-6]
+            composition: 2 4
+            sigma: 1
+            energy: -184.747 [kJ/mol]
+            volume: 218.625 [A^3]
+            mass: 136.148 [amu]
+            inertia: 599.285 587.091 411.024 [amu*Angstrom^2]
+            frequencies: 32.8176 ... 3671.57 [1/cm]
+
+        [m2w4-9]
+            composition: 2 4
+            sigma: 1
+            energy: -189.289 [kJ/mol]
+            volume: 218.625 [A^3]
+            mass: 136.148 [amu]
+            inertia: 685.244 538.181 426.482 [amu*Angstrom^2]
+            frequencies: 31.6659 ... 3676.82 [1/cm]
+
+        [m3w1-1]
+            composition: 3 1
+            sigma: 1
+            energy: -107.542 [kJ/mol]
+            volume: 198.633 [A^3]
+            mass: 114.142 [amu]
+            inertia: 591.028 403.535 305.221 [amu*Angstrom^2]
+            frequencies: 15.7482 ... 3661.28 [1/cm]
+
+        [m3w1-2]
+            composition: 3 1
+            sigma: 1
+            energy: -107.705 [kJ/mol]
+            volume: 198.633 [A^3]
+            mass: 114.142 [amu]
+            inertia: 599.708 406.414 304.334 [amu*Angstrom^2]
+            frequencies: 20.6113 ... 3661.60 [1/cm]
+
+        [m3w2-1]
+            composition: 3 2
+            sigma: 1
+            energy: -142.074 [kJ/mol]
+            volume: 224.494 [A^3]
+            mass: 132.158 [amu]
+            inertia: 771.934 486.826 447.522 [amu*Angstrom^2]
+            frequencies: 20.0444 ... 3663.74 [1/cm]
+
+        [m3w3-1]
+            composition: 3 3
+            sigma: 1
+            energy: -183.426 [kJ/mol]
+            volume: 250.355 [A^3]
+            mass: 150.174 [amu]
+            inertia: 745.722 628.371 561.075 [amu*Angstrom^2]
+            frequencies: 12.3831 ... 3669.07 [1/cm]
+
+        [m3w3-3]
+            composition: 3 3
+            sigma: 1
+            energy: -185.863 [kJ/mol]
+            volume: 250.355 [A^3]
+            mass: 150.174 [amu]
+            inertia: 786.046 623.791 543.477 [amu*Angstrom^2]
+            frequencies: 24.6933 ... 3668.64 [1/cm]
+
+        [m3w3-5]
+            composition: 3 3
+            sigma: 1
+            energy: -180.872 [kJ/mol]
+            volume: 250.355 [A^3]
+            mass: 150.174 [amu]
+            inertia: 709.748 662.119 587.208 [amu*Angstrom^2]
+            frequencies: 27.7515 ... 3515.18 [1/cm]
+
+        [m3w3-7]
+            composition: 3 3
+            sigma: 1
+            energy: -183.501 [kJ/mol]
+            volume: 250.355 [A^3]
+            mass: 150.174 [amu]
+            inertia: 754.972 651.458 585.624 [amu*Angstrom^2]
+            frequencies: 21.6106 ... 3664.81 [1/cm]
+
+        [m3w3-9]
+            composition: 3 3
+            sigma: 1
+            energy: -183.909 [kJ/mol]
+            volume: 250.355 [A^3]
+            mass: 150.174 [amu]
+            inertia: 739.303 640.297 553.254 [amu*Angstrom^2]
+            frequencies: 17.0357 ... 3667.81 [1/cm]
+
+        [m4w1-2]
+            composition: 4 1
+            sigma: 1
+            energy: -140.987 [kJ/mol]
+            volume: 256.224 [A^3]
+            mass: 146.184 [amu]
+            inertia: 935.168 628.291 499.019 [amu*Angstrom^2]
+            frequencies: 17.2828 ... 3662.83 [1/cm]
+
+        [m4w1-5]
+            composition: 4 1
+            sigma: 1
+            energy: -141.285 [kJ/mol]
+            volume: 256.224 [A^3]
+            mass: 146.184 [amu]
+            inertia: 921.380 631.506 491.469 [amu*Angstrom^2]
+            frequencies: 16.0905 ... 3661.42 [1/cm]
+
+        [m4w2-1]
+            composition: 4 2
+            sigma: 1
+            energy: -184.070 [kJ/mol]
+            volume: 282.085 [A^3]
+            mass: 164.200 [amu]
+            inertia: 789.234 745.750 703.207 [amu*Angstrom^2]
+            frequencies: 28.2743 ... 3665.68 [1/cm]
+
+        [m4w2-7]
+            composition: 4 2
+            sigma: 1
+            energy: -184.445 [kJ/mol]
+            volume: 282.085 [A^3]
+            mass: 164.200 [amu]
+            inertia: 1006.74 848.314 529.479 [amu*Angstrom^2]
+            frequencies: 15.5539 ... 3669.93 [1/cm]
+
+        [m4w2-8]
+            composition: 4 2
+            sigma: 1
+            energy: -183.971 [kJ/mol]
+            volume: 282.085 [A^3]
+            mass: 164.200 [amu]
+            inertia: 1009.89 831.623 550.433 [amu*Angstrom^2]
+            frequencies: 20.5120 ... 3669.60 [1/cm]
+
+        [m5w1-1]
+            composition: 5 1
+            sigma: 1
+            energy: -183.932 [kJ/mol]
+            volume: 313.815 [A^3]
+            mass: 178.226 [amu]
+            inertia: 921.281 904.445 786.444 [amu*Angstrom^2]
+            frequencies: 22.6956 ... 3415.60 [1/cm]
+
+        [m5w1-6]
+            composition: 5 1
+            sigma: 1
+            energy: -180.472 [kJ/mol]
+            volume: 313.815 [A^3]
+            mass: 178.226 [amu]
+            inertia: 957.528 890.164 792.875 [amu*Angstrom^2]
+            frequencies: 20.4935 ... 3420.62 [1/cm]
+
+        [m5w1-8]
+            composition: 5 1
+            sigma: 1
+            energy: -185.384 [kJ/mol]
+            volume: 313.815 [A^3]
+            mass: 178.226 [amu]
+            inertia: 1017.83 941.042 742.974 [amu*Angstrom^2]
+            frequencies: 21.5851 ... 3416.12 [1/cm]
+
+        [m5w1-9]
+            composition: 5 1
+            sigma: 1
+            energy: -183.034 [kJ/mol]
+            volume: 313.815 [A^3]
+            mass: 178.226 [amu]
+            inertia: 1122.13 925.772 737.269 [amu*Angstrom^2]
+            frequencies: 20.4476 ... 3422.37 [1/cm]
+
+ Now starting Downhill-Simplex
+    Number of converged iterations: 127/127
+    Number of converged iterations (total): 127/127
+
+    Best isobar found for: amf_mix = 0.372451 J*m^3/mol^2, bxv_mix = 1.09308
+    Error: 0.905185E-014
+    Calculated phase transition: 350.817 K
+    Calculated density: 0.926048 g/cm^3
+
+    Elapsed time: 9.1 seconds
+
+[1m    Please always cite:
+
+        * Michael von Domaros, Eva Perlt, Johannes Ingenmey, Gwydyon Marchelli, Barbara Kirchner:
+          "Peacemaker 2: Making clusters talk about binary mixtures and neat liquids".
+          SoftwareX (2018).
+
+        * Barbara Kirchner, Christian Spickermann, Sebastian B. C. Lehmann, Eva Perlt,
+          Johanna Langner, Michael von Domaros, Patricia Reuther, Frank Uhlig, Miriam Kohagen,
+          Marc Brüssel:
+          "What can clusters tell us about the bulk? PEACEMAKER: Extended quantum cluster equilibrium calculations".
+          Comp. Physics Commun. 182 (2011), 1428.
+
+        * Barbara Kirchner:
+          "Cooperative versus dispersion effects: What is more important in an associated liquid such as water?".
+          J. Chem. Phys. 123 (2005), 204116.
+
+    For binary mixtures, please cite:
+
+        * Marc Brüssel, Eva Perlt, Sebastian B. C. Lehmann, Michael von Domaros, Barbara Kirchner:
+          "Binary systems from quantum cluster equilibrium theory".
+          J. Chem. Phys. 135 (2011), 194113.
+
+    For anharmonicites, please cite:
+
+        * Michael von Domaros, Eva Perlt:
+          "Anharmonic effects in the quantum cluster equilibrium method".
+          J. Chem. Phys. 146 (2017), 154502.
+
+    For acid constants, please cite:
+
+        * Eva Perlt, Michael von Domaros, Barbara Kirchner, Ralf Ludwig, Frank Weinhold".
+          "Predicting the ionic product of water".
+          Sci. Rep. 7 (2017), 10244.
+[0m

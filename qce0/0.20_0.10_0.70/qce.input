@@ -1,0 +1,12 @@
+[system]
+components 3
+
+[qce]
+amf 0.0
+bxv 1.0
+
+[ensemble]
+temperature 273.15 399.15 127 # K
+pressure 1.01325 # bar
+monomer_amounts 0.20 0.10 0.70
+

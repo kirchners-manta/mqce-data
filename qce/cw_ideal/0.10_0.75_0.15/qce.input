@@ -1,0 +1,17 @@
+[system]
+components 3
+
+[qce]
+amf 0.6429006
+bxv 1.1528745
+grid_iterations 1
+optimizer 1
+
+[ensemble]
+temperature 273.15 399.15 127 # K
+pressure 1.01325 # bar
+monomer_amounts 0.10 0.75 0.15
+
+[reference]
+density 298.15 0.947899999759 # K; g/cm^3
+phase_transition 336.792582098 # K
